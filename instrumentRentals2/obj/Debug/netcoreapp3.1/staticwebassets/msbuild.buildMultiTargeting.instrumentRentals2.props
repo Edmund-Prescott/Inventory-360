@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/instrumentRentals2.props" />
+</Project>

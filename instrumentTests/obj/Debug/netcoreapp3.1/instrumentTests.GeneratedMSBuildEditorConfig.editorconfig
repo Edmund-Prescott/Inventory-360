@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = instrumentTests
+build_property.ProjectDir = /Users/andrew/Projects/instrumentRentals2/instrumentTests/
