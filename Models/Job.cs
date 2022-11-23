@@ -9,8 +9,8 @@ namespace Inventory_360.Models
     {
         public int Id { get; set; }
         public string JobNumber { get; set; }
-        public int StartDate { get; set; }
-        public int FinishDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime FinishDate { get; set; }
         public Equipment Equpiment { get; set; }
     }
 }
