@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace inventory_360.Data.Migrations
+namespace inventory_360.Migrations
 {
-    public partial class rentalAgreement : Migration
+    public partial class Equipment : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

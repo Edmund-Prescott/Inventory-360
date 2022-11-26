@@ -3606,11 +3606,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/andrew/Projects/inventory_360/inventory_360_tests/inventory_360_tests.csproj",
+      "projectUniqueName": "/Users/andrew/Documents/GitHub/Inventory-360/inventory_360_tests/inventory_360_tests.csproj",
       "projectName": "inventory_360_tests",
-      "projectPath": "/Users/andrew/Projects/inventory_360/inventory_360_tests/inventory_360_tests.csproj",
+      "projectPath": "/Users/andrew/Documents/GitHub/Inventory-360/inventory_360_tests/inventory_360_tests.csproj",
       "packagesPath": "/Users/andrew/.nuget/packages/",
-      "outputPath": "/Users/andrew/Projects/inventory_360/inventory_360_tests/obj/",
+      "outputPath": "/Users/andrew/Documents/GitHub/Inventory-360/inventory_360_tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/andrew/.nuget/NuGet/NuGet.Config"

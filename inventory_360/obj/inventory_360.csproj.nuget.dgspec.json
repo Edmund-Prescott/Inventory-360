@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/andrew/Projects/inventory_360/inventory_360/inventory_360.csproj": {}
+    "/Users/andrew/Documents/GitHub/Inventory-360/inventory_360/inventory_360.csproj": {}
   },
   "projects": {
-    "/Users/andrew/Projects/inventory_360/inventory_360/inventory_360.csproj": {
+    "/Users/andrew/Documents/GitHub/Inventory-360/inventory_360/inventory_360.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/andrew/Projects/inventory_360/inventory_360/inventory_360.csproj",
+        "projectUniqueName": "/Users/andrew/Documents/GitHub/Inventory-360/inventory_360/inventory_360.csproj",
         "projectName": "inventory_360",
-        "projectPath": "/Users/andrew/Projects/inventory_360/inventory_360/inventory_360.csproj",
+        "projectPath": "/Users/andrew/Documents/GitHub/Inventory-360/inventory_360/inventory_360.csproj",
         "packagesPath": "/Users/andrew/.nuget/packages/",
-        "outputPath": "/Users/andrew/Projects/inventory_360/inventory_360/obj/",
+        "outputPath": "/Users/andrew/Documents/GitHub/Inventory-360/inventory_360/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/andrew/.nuget/NuGet/NuGet.Config"

@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using inventory_360.Data;
 
-namespace inventory_360.Data.Migrations
+namespace inventory_360.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221027232129_instrument")]
-    partial class instrument
+    [Migration("20221126165519_Equipment")]
+    partial class Equipment
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -214,62 +214,99 @@ namespace inventory_360.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("instrumentRentals2.Models.customer", b =>
+            modelBuilder.Entity("inventory_360.Models.Client", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("firstName")
+                    b.Property<string>("Address")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("lastName")
+                    b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("id");
+                    b.Property<int?>("JobId")
+                        .HasColumnType("INTEGER");
 
-                    b.ToTable("customer");
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Phone")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobId");
+
+                    b.ToTable("client");
                 });
 
-            modelBuilder.Entity("instrumentRentals2.Models.instrument", b =>
+            modelBuilder.Entity("inventory_360.Models.Employee", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("name")
+                    b.Property<int>("EmployeeNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("type")
-                        .HasColumnType("TEXT");
+                    b.HasKey("Id");
 
-                    b.HasKey("id");
-
-                    b.ToTable("instrument");
+                    b.ToTable("employee");
                 });
 
-            modelBuilder.Entity("instrumentRentals2.Models.rentalAgreement", b =>
+            modelBuilder.Entity("inventory_360.Models.Equipment", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("customerid")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("instrumentid")
+                    b.Property<int>("Make")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("rentalStart")
+                    b.Property<int>("Model")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("customerid");
+                    b.HasIndex("EmployeeId");
 
-                    b.HasIndex("instrumentid");
+                    b.ToTable("equipment");
+                });
 
-                    b.ToTable("rentalAgreement");
+            modelBuilder.Entity("inventory_360.Models.Job", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("EqupimentId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("FinishDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("JobNumber")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EqupimentId");
+
+                    b.ToTable("job");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -323,15 +360,25 @@ namespace inventory_360.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("instrumentRentals2.Models.rentalAgreement", b =>
+            modelBuilder.Entity("inventory_360.Models.Client", b =>
                 {
-                    b.HasOne("instrumentRentals2.Models.customer", "customer")
+                    b.HasOne("inventory_360.Models.Job", "Job")
                         .WithMany()
-                        .HasForeignKey("customerid");
+                        .HasForeignKey("JobId");
+                });
 
-                    b.HasOne("instrumentRentals2.Models.instrument", "instrument")
+            modelBuilder.Entity("inventory_360.Models.Equipment", b =>
+                {
+                    b.HasOne("inventory_360.Models.Employee", "Employee")
                         .WithMany()
-                        .HasForeignKey("instrumentid");
+                        .HasForeignKey("EmployeeId");
+                });
+
+            modelBuilder.Entity("inventory_360.Models.Job", b =>
+                {
+                    b.HasOne("inventory_360.Models.Equipment", "Equpiment")
+                        .WithMany()
+                        .HasForeignKey("EqupimentId");
                 });
 #pragma warning restore 612, 618
         }
