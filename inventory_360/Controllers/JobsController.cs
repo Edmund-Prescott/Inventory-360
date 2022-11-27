@@ -12,9 +12,9 @@ namespace inventory_360.Controllers
 {
     public class JobsController : Controller
     {
-        private readonly inventory_360Context _context;
+        private readonly ApplicationDbContext _context;
 
-        public JobsController(inventory_360Context context)
+        public JobsController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace inventory_360.Controllers
         // GET: Jobs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Job.ToListAsync());
+            return View(await _context.job.ToListAsync());
         }
 
         // GET: Jobs/Details/5
@@ -33,7 +33,7 @@ namespace inventory_360.Controllers
                 return NotFound();
             }
 
-            var job = await _context.Job
+            var job = await _context.job
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (job == null)
             {
@@ -73,7 +73,7 @@ namespace inventory_360.Controllers
                 return NotFound();
             }
 
-            var job = await _context.Job.FindAsync(id);
+            var job = await _context.job.FindAsync(id);
             if (job == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace inventory_360.Controllers
                 return NotFound();
             }
 
-            var job = await _context.Job
+            var job = await _context.job
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (job == null)
             {
@@ -139,15 +139,15 @@ namespace inventory_360.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var job = await _context.Job.FindAsync(id);
-            _context.Job.Remove(job);
+            var job = await _context.job.FindAsync(id);
+            _context.job.Remove(job);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool JobExists(int id)
         {
-            return _context.Job.Any(e => e.Id == id);
+            return _context.job.Any(e => e.Id == id);
         }
     }
 }

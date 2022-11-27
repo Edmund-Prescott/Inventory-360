@@ -12,9 +12,9 @@ namespace inventory_360.Controllers
 {
     public class ErrorViewModelsController : Controller
     {
-        private readonly inventory_360Context _context;
+        private readonly ApplicationDbContext _context;
 
-        public ErrorViewModelsController(inventory_360Context context)
+        public ErrorViewModelsController(ApplicationDbContext context)
         {
             _context = context;
         }

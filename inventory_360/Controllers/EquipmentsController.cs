@@ -12,9 +12,9 @@ namespace inventory_360.Controllers
 {
     public class EquipmentsController : Controller
     {
-        private readonly inventory_360Context _context;
+        private readonly ApplicationDbContext _context;
 
-        public EquipmentsController(inventory_360Context context)
+        public EquipmentsController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace inventory_360.Controllers
         // GET: Equipments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Equipment.ToListAsync());
+            return View(await _context.equipment.ToListAsync());
         }
 
         // GET: Equipments/Details/5
@@ -33,7 +33,7 @@ namespace inventory_360.Controllers
                 return NotFound();
             }
 
-            var equipment = await _context.Equipment
+            var equipment = await _context.equipment
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (equipment == null)
             {
@@ -73,7 +73,7 @@ namespace inventory_360.Controllers
                 return NotFound();
             }
 
-            var equipment = await _context.Equipment.FindAsync(id);
+            var equipment = await _context.equipment.FindAsync(id);
             if (equipment == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace inventory_360.Controllers
                 return NotFound();
             }
 
-            var equipment = await _context.Equipment
+            var equipment = await _context.equipment
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (equipment == null)
             {
@@ -139,15 +139,15 @@ namespace inventory_360.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var equipment = await _context.Equipment.FindAsync(id);
-            _context.Equipment.Remove(equipment);
+            var equipment = await _context.equipment.FindAsync(id);
+            _context.equipment.Remove(equipment);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool EquipmentExists(int id)
         {
-            return _context.Equipment.Any(e => e.Id == id);
+            return _context.equipment.Any(e => e.Id == id);
         }
     }
 }

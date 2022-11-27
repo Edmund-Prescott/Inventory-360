@@ -2,7 +2,7 @@
 
 namespace inventory_360.Migrations
 {
-    public partial class Employee : Migration
+    public partial class job : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

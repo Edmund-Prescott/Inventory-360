@@ -17,6 +17,7 @@ namespace inventory_360.Data
         public DbSet<inventory_360.Models.Employee> employee { get; set; }
         public DbSet<inventory_360.Models.Job> job { get; set; }
         public DbSet<inventory_360.Models.Equipment> equipment { get; set; }
+        public DbSet<inventory_360.Models.ErrorViewModel> ErrorViewModel { get; set; }
     }
 }
 

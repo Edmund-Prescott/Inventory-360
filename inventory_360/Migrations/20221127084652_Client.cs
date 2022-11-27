@@ -61,6 +61,19 @@ namespace inventory_360.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ErrorViewModel",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    RequestId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ErrorViewModel", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -305,6 +318,9 @@ namespace inventory_360.Migrations
 
             migrationBuilder.DropTable(
                 name: "client");
+
+            migrationBuilder.DropTable(
+                name: "ErrorViewModel");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

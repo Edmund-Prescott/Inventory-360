@@ -9,8 +9,8 @@ using inventory_360.Data;
 namespace inventory_360.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221126165519_Equipment")]
-    partial class Equipment
+    [Migration("20221127084652_Client")]
+    partial class Client
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -282,6 +282,20 @@ namespace inventory_360.Migrations
                     b.HasIndex("EmployeeId");
 
                     b.ToTable("equipment");
+                });
+
+            modelBuilder.Entity("inventory_360.Models.ErrorViewModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("RequestId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("ErrorViewModel");
                 });
 
             modelBuilder.Entity("inventory_360.Models.Job", b =>

@@ -282,6 +282,20 @@ namespace inventory_360.Migrations
                     b.ToTable("equipment");
                 });
 
+            modelBuilder.Entity("inventory_360.Models.ErrorViewModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("RequestId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("ErrorViewModel");
+                });
+
             modelBuilder.Entity("inventory_360.Models.Job", b =>
                 {
                     b.Property<int>("Id")
