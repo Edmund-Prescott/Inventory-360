@@ -35,6 +35,9 @@ namespace inventory_360
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
            services.AddRazorPages();
+
+            services.AddDbContext<inventory_360Context>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("inventory_360Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
