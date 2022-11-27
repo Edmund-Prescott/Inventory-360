@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/inventory_360.props" />
+</Project>
