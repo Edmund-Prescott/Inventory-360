@@ -9,8 +9,8 @@ using inventory_360.Data;
 namespace inventory_360.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221127084735_equipment")]
-    partial class equipment
+    [Migration("20221203053937_initialmigration")]
+    partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -226,9 +226,6 @@ namespace inventory_360.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("JobId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
@@ -237,8 +234,6 @@ namespace inventory_360.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JobId");
-
                     b.ToTable("client");
                 });
 
@@ -246,9 +241,6 @@ namespace inventory_360.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("EmployeeNumber")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -265,21 +257,13 @@ namespace inventory_360.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("EmployeeId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Make")
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("Make")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Model")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("Model")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
 
                     b.ToTable("equipment");
                 });
@@ -304,6 +288,12 @@ namespace inventory_360.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("EqupimentId")
                         .HasColumnType("INTEGER");
 
@@ -317,6 +307,10 @@ namespace inventory_360.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("EqupimentId");
 
@@ -374,22 +368,16 @@ namespace inventory_360.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("inventory_360.Models.Client", b =>
+            modelBuilder.Entity("inventory_360.Models.Job", b =>
                 {
-                    b.HasOne("inventory_360.Models.Job", "Job")
+                    b.HasOne("inventory_360.Models.Client", "Client")
                         .WithMany()
-                        .HasForeignKey("JobId");
-                });
+                        .HasForeignKey("ClientId");
 
-            modelBuilder.Entity("inventory_360.Models.Equipment", b =>
-                {
                     b.HasOne("inventory_360.Models.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId");
-                });
 
-            modelBuilder.Entity("inventory_360.Models.Job", b =>
-                {
                     b.HasOne("inventory_360.Models.Equipment", "Equpiment")
                         .WithMany()
                         .HasForeignKey("EqupimentId");
