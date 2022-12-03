@@ -96,3 +96,7 @@ td {
     border: 1px solid;
     padding: 5px;
 }
+
+#map {
+    height: 100%;
+}
