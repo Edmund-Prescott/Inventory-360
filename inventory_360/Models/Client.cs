@@ -12,6 +12,5 @@ namespace inventory_360.Models
         public string Address { get; set; }
         public int Phone { get; set; }
         public string Email { get; set; }
-        public Job Job { get; set; }
     }
 }

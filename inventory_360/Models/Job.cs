@@ -12,5 +12,7 @@ namespace inventory_360.Models
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
         public Equipment Equpiment { get; set; }
+        public Employee Employee { get; set; }
+        public Client Client { get; set; }
     }
 }
