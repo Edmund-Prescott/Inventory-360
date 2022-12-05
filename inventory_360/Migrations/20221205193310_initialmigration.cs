@@ -214,7 +214,6 @@ namespace inventory_360.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    JobNumber = table.Column<string>(nullable: true),
                     StartDate = table.Column<DateTime>(nullable: false),
                     FinishDate = table.Column<DateTime>(nullable: false),
                     EqupimentId = table.Column<int>(nullable: true),
