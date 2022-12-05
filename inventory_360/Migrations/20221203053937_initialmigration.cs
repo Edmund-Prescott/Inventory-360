@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace inventory_360.Migrations
 {
-    public partial class Client : Migration
+    public partial class initialmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,17 +47,46 @@ namespace inventory_360.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "employee",
+                name: "client",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
-                    EmployeeNumber = table.Column<int>(nullable: false)
+                    Address = table.Column<string>(nullable: true),
+                    Phone = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_client", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "employee",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_employee", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "equipment",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Make = table.Column<string>(nullable: true),
+                    Model = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_equipment", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -180,28 +209,6 @@ namespace inventory_360.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "equipment",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
-                    Make = table.Column<int>(nullable: false),
-                    Model = table.Column<int>(nullable: false),
-                    EmployeeId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_equipment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_equipment_employee_EmployeeId",
-                        column: x => x.EmployeeId,
-                        principalTable: "employee",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "job",
                 columns: table => new
                 {
@@ -210,38 +217,29 @@ namespace inventory_360.Migrations
                     JobNumber = table.Column<string>(nullable: true),
                     StartDate = table.Column<DateTime>(nullable: false),
                     FinishDate = table.Column<DateTime>(nullable: false),
-                    EqupimentId = table.Column<int>(nullable: true)
+                    EqupimentId = table.Column<int>(nullable: true),
+                    EmployeeId = table.Column<int>(nullable: true),
+                    ClientId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_job", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_job_client_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "client",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_job_employee_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "employee",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_job_equipment_EqupimentId",
                         column: x => x.EqupimentId,
                         principalTable: "equipment",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "client",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    Phone = table.Column<int>(nullable: false),
-                    Email = table.Column<string>(nullable: true),
-                    JobId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_client", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_client_job_JobId",
-                        column: x => x.JobId,
-                        principalTable: "job",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -284,13 +282,13 @@ namespace inventory_360.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_client_JobId",
-                table: "client",
-                column: "JobId");
+                name: "IX_job_ClientId",
+                table: "job",
+                column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_equipment_EmployeeId",
-                table: "equipment",
+                name: "IX_job_EmployeeId",
+                table: "job",
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
@@ -317,10 +315,10 @@ namespace inventory_360.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "client");
+                name: "ErrorViewModel");
 
             migrationBuilder.DropTable(
-                name: "ErrorViewModel");
+                name: "job");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -329,13 +327,13 @@ namespace inventory_360.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "job");
-
-            migrationBuilder.DropTable(
-                name: "equipment");
+                name: "client");
 
             migrationBuilder.DropTable(
                 name: "employee");
+
+            migrationBuilder.DropTable(
+                name: "equipment");
         }
     }
 }
