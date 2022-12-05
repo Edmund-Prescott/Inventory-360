@@ -46,7 +46,16 @@ namespace inventory_360.Controllers
         // GET: Jobs/Create
         public IActionResult Create()
         {
-            return View();
+            CreateJobView jobView = new CreateJobView();
+            jobView.StartDate = DateTime.Now;
+            jobView.FinishDate = DateTime.Now;
+            List<Equipment> equipList = _context.equipment.ToList<Equipment>();
+            List<Employee> empList = _context.employee.ToList<Employee>();
+            List<Client> clientList = _context.client.ToList<Client>();
+            jobView.Equipments = equipList;
+            jobView.Employees = empList;
+            jobView.Clients = clientList;
+            return View(jobView);
         }
 
         // POST: Jobs/Create
@@ -54,11 +63,17 @@ namespace inventory_360.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,JobNumber,StartDate,FinishDate")] Job job)
+        public async Task<IActionResult> Create([Bind("Id,StartDate,FinishDate,SelectedEquipmentId,SelectedEmployeeId,SelectedClientId")] CreateJobView job)
         {
+            Job tempJob = new Job();
             if (ModelState.IsValid)
             {
-                _context.Add(job);
+                tempJob.StartDate = job.StartDate;
+                tempJob.FinishDate = job.FinishDate;
+                tempJob.Equpiment = _context.equipment.Find(job.SelectedEquipmentId);
+                tempJob.Employee = _context.employee.Find(job.SelectedEmployeeId);
+                tempJob.Client = _context.client.Find(job.SelectedClientId);
+                _context.Add(tempJob);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -72,13 +87,22 @@ namespace inventory_360.Controllers
             {
                 return NotFound();
             }
-
+            EditJobView viewModel = new EditJobView();
             var job = await _context.job.FindAsync(id);
             if (job == null)
             {
                 return NotFound();
             }
-            return View(job);
+            List<Equipment> equipList = _context.equipment.ToList<Equipment>();
+            List<Employee> empList = _context.employee.ToList<Employee>();
+            List<Client> clientList = _context.client.ToList<Client>();
+
+            viewModel.StartDate = job.StartDate;
+            viewModel.FinishDate = job.FinishDate;
+            viewModel.Equipments = equipList;
+            viewModel.Employees = empList;
+            viewModel.Clients = clientList;
+            return View(viewModel);
         }
 
         // POST: Jobs/Edit/5
@@ -86,23 +110,33 @@ namespace inventory_360.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,JobNumber,StartDate,FinishDate")] Job job)
+        public async Task<IActionResult> Edit(int id, [Bind("StartDate,FinishDate,SelectedEquipmentId,SelectedEmployeeId,SelectedClientId")] EditJobView editedJobInfo)
         {
-            if (id != job.Id)
+            if (id != editedJobInfo.Id)
             {
                 return NotFound();
             }
-
+            Job? jobEvent;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(job);
+                    jobEvent = await _context.job.FirstOrDefaultAsync(f => f.Id == id);
+                    if (jobEvent == null)
+                    {
+                        return NotFound();
+                    }
+                    jobEvent.StartDate = editedJobInfo.StartDate;
+                    jobEvent.FinishDate = editedJobInfo.FinishDate;
+                    jobEvent.Equpiment = _context.equipment.Find(editedJobInfo.SelectedEquipmentId);
+                    jobEvent.Employee = _context.employee.Find(editedJobInfo.SelectedEmployeeId);
+                    jobEvent.Client = _context.client.Find(editedJobInfo.SelectedClientId);
+                    _context.Update(jobEvent);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!JobExists(job.Id))
+                    if (!JobExists(id))
                     {
                         return NotFound();
                     }
@@ -113,7 +147,7 @@ namespace inventory_360.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(job);
+            return View(editedJobInfo);
         }
 
         // GET: Jobs/Delete/5
