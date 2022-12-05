@@ -1,4 +1,4 @@
-﻿@model inventory_360.Models.Job
+﻿@model inventory_360.Models.CreateJobView
 
 @{
     ViewData["Title"] = "Create";
@@ -22,6 +22,64 @@
                 <input asp-for="FinishDate" class="form-control" />
                 <span asp-validation-for="FinishDate" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Equipments" class="control-label" />
+                @if (Model.Equipments != null && Model.Equipments.Count > 0)
+                {
+                    <p>Equipment</p>
+                    <select asp-for="SelectedEquipmentId" class="form-control">
+                        @foreach (Equipment equipment in Model.Equipments)
+                        {
+                            <option value=@equipment.Id>@equipment.Make</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <a class="btn btn-primary" asp-controller="Items" asp-action="Create">New Item</a>
+                    <br />
+                }
+                <br />
+            </div>
+            <div class="form-group">
+                <label asp-for="Employees" class="control-label" />
+                @if (Model.Employees != null && Model.Employees.Count > 0)
+                {
+                    <p>Employee</p>
+                    <select asp-for="SelectedEmployeeId" class="form-control">
+                        @foreach (Employee employee in Model.Employees)
+                        {
+                            <option value=@employee.Id>@employee.Name</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <a class="btn btn-primary" asp-controller="Items" asp-action="Create">New Item</a>
+                    <br />
+                }
+                <br />
+            </div>
+            <div class="form-group">
+                <label asp-for="Clients" class="control-label" />
+                @if (Model.Clients != null && Model.Clients.Count > 0)
+                {
+                    <p>Client</p>
+                    <select asp-for="SelectedClientId" class="form-control">
+                        @foreach (Client client in Model.Clients)
+                        {
+                            <option value=@client.Id>@client.Name</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <a class="btn btn-primary" asp-controller="Items" asp-action="Create">New Item</a>
+                    <br />
+                }
+                <br />
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

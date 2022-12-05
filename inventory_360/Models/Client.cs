@@ -8,9 +8,9 @@ namespace inventory_360.Models
     public class Client
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public int Phone { get; set; }
-        public string Email { get; set; }
+        public string Name { get; set; } = String.Empty;
+        public string Address { get; set; } = String.Empty;
+        public int Phone { get; set; } = 0;
+        public string Email { get; set; } = String.Empty;
     }
 }
