@@ -227,8 +227,8 @@ namespace inventory_360.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Phone")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Phone")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -296,9 +296,6 @@ namespace inventory_360.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("FinishDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("JobNumber")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("StartDate")

@@ -66,6 +66,9 @@ namespace inventory_360
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
         }
     }
 }
