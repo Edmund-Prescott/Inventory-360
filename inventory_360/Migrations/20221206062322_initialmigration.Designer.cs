@@ -9,7 +9,7 @@ using inventory_360.Data;
 namespace inventory_360.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221205193310_initialmigration")]
+    [Migration("20221206062322_initialmigration")]
     partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -229,8 +229,8 @@ namespace inventory_360.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Phone")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Phone")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
