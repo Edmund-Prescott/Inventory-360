@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\inventory_360",
+    "\\inventory_360\\wwwroot",
+    "\\inventory_360\\wwwroot\\js"
   ],
-  "SelectedNode": "\\inventory_360.sln",
+  "SelectedNode": "\\inventory_360\\wwwroot\\js\\site.js",
   "PreviewInSolutionExplorer": false
 }
