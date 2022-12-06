@@ -6,23 +6,68 @@
 
 @section Scripts {
     
-    
-    <script src="~/js/map.js" ></script>
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCylJotEqA54JOf7LSyz_5zMgPCI_vu_H4&callback=initialize" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCylJotEqA54JOf7LSyz_5zMgPCI_vu_H4&libraries=places&callback=initialize" async defer></script>
     <script>
         var directionsDisplay,
             directionsService,
-            map;
+            map,
+            input,
+            autocomplete,
+            marker;
 
         function initialize() {
-            var directionsService = new google.maps.DirectionsService();
-            directionsDisplay = new google.maps.DirectionsRenderer();
-            var chicago = new google.maps.LatLng(41.850033, -87.6500523);
-            var mapOptions = { zoom: 7, mapTypeId: google.maps.MapTypeId.ROADMAP, center: chicago }
+            loadMap();
+            loadMarker();
+            loadAddressBar();
+        }
+
+        function loadMarker(){
+            marker = new google.maps.Marker({map: map, title:"marker"});
+        }
+
+        function loadMap(){
+
+            var earth = new google.maps.LatLng(0, 0);
+            var mapOptions = {
+                zoom: 1,
+                disableDefaultUI: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                center: earth,
+                draggable: false, 
+                zoomControl: false, 
+                scrollwheel: false, 
+                disableDoubleClickZoom: true,
+                keyboardShortcuts: false,
+                clickableIcons: false
+            }
+
             map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-            directionsDisplay.setMap(map);
+        }
+
+        function loadAddressBar(){
+
+            input = document.getElementById('autocomplete');
+            autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    return;
+                }
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17);
+                }
+
+                marker.setPlace(({
+                    placeId: place.place_id,
+                    location: place.geometry.location
+                }));
+            });
         }
 
     </script>
@@ -46,7 +91,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
+                    <input asp-for="Address" id="autocomplete" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div id="map_canvas" class="form-group" style="height: 354px; width:713px;"></div>
