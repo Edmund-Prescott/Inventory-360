@@ -1,9 +1,17 @@
 ﻿<Properties StartupConfiguration="{84DB418F-58A1-4373-A2FF-2AA08BC4C74E}|instrumentRentals2">
-  <MonoDevelop.Ide.ItemProperties.inventory__360 PreferredExecutionTarget="/Applications/Firefox.app" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="inventory_360/Controllers/JobsController.cs">
+  <MonoDevelop.Ide.ItemProperties.inventory__360 PreferredExecutionTarget="/Applications/Firefox.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="inventory_360/Views/Jobs/Create.cshtml">
     <Files>
       <File FileName="inventory_360/Controllers/JobsController.cs" Line="1" Column="1" />
+      <File FileName="inventory_360/Views/Jobs/Index.cshtml" Line="37" Column="61" />
+      <File FileName="inventory_360/Views/Jobs/Create.cshtml" Line="31" Column="75" />
+      <File FileName="inventory_360/Models/Job.cs" Line="16" Column="1" />
+      <File FileName="inventory_360/Views/Clients/Create.cshtml" Line="8" Column="97" />
+      <File FileName="inventory_360/Views/Clients/Index.cshtml" Line="34" Column="56" />
+      <File FileName="inventory_360/Models/Employee.cs" Line="1" Column="1" />
+      <File FileName="inventory_360/Models/CreateJobView.cs" Line="15" Column="9" />
+      <File FileName="inventory_360/Views/Jobs/Delete.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,13 +19,21 @@
           <Node name="inventory_360" expanded="True">
             <Node name="inventory_360" expanded="True">
               <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Jobs" expanded="True">
+                  <Node name="Create.cshtml" selected="True" />
+                </Node>
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

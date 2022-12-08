@@ -13,6 +13,10 @@ namespace inventory_360.Models
         public Equipment Equpiment { get; set; }
         public Employee Employee { get; set; }
         public Client Client { get; set; }
+
+        public List<Equipment>? Equipments { get; set; }
+        public List<Employee>? Employees { get; set; }
+        public List<Client>? Clients { get; set; }
         public Job()
         {
             Equpiment = new Equipment();

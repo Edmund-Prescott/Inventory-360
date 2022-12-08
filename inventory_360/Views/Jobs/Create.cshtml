@@ -1,4 +1,4 @@
-﻿@model inventory_360.Models.CreateJobView
+﻿@model inventory_360.Models.Job
 
 @{
     ViewData["Title"] = "Create";
@@ -23,12 +23,12 @@
                 <span asp-validation-for="FinishDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Equipments" class="control-label" />
-                @if (Model.Equipments != null && Model.Equipments.Count > 0)
+                <label asp-for="Equpiment" class="control-label" />
+                @if (Model.Equpiment != null && Model.Equpiments.Count > 0)
                 {
                     <p>Equipment</p>
-                    <select asp-for="SelectedEquipmentId" class="form-control">
-                        @foreach (Equipment equipment in Model.Equipments)
+                    <select asp-for="Equpiment" class="form-control">
+                        @foreach (Equipment equipment in Model.Equpiments)
                         {
                             <option value=@equipment.Id>@equipment.Make</option>
                         }
@@ -42,11 +42,11 @@
                 <br />
             </div>
             <div class="form-group">
-                <label asp-for="Employees" class="control-label" />
-                @if (Model.Employees != null && Model.Employees.Count > 0)
+                <label asp-for="Employee" class="control-label" />
+                @if (Model.Employee != null && Model.Employees.Count > 0)
                 {
                     <p>Employee</p>
-                    <select asp-for="SelectedEmployeeId" class="form-control">
+                    <select asp-for="Employee" class="form-control">
                         @foreach (Employee employee in Model.Employees)
                         {
                             <option value=@employee.Id>@employee.Name</option>
@@ -65,7 +65,7 @@
                 @if (Model.Clients != null && Model.Clients.Count > 0)
                 {
                     <p>Client</p>
-                    <select asp-for="SelectedClientId" class="form-control">
+                    <select asp-for="Clients" class="form-control">
                         @foreach (Client client in Model.Clients)
                         {
                             <option value=@client.Id>@client.Name</option>
