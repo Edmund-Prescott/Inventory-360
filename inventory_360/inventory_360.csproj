@@ -11,6 +11,7 @@
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Models\" />
+    <None Remove="Api\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.30" />
@@ -27,5 +28,6 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Api\" />
   </ItemGroup>
 </Project>

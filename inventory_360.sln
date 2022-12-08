@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1703.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "invetory_360", "inventory_360\inventory_360.csproj", "{84DB418F-58A1-4373-A2FF-2AA08BC4C74E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "instrumentTests", "inventory_360_tests\inventory_360_tests.csproj", "{96E07986-6382-46D2-B6FE-9B276A92A1B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "inventory_360", "inventory_360\inventory_360.csproj", "{84DB418F-58A1-4373-A2FF-2AA08BC4C74E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{84DB418F-58A1-4373-A2FF-2AA08BC4C74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84DB418F-58A1-4373-A2FF-2AA08BC4C74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84DB418F-58A1-4373-A2FF-2AA08BC4C74E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96E07986-6382-46D2-B6FE-9B276A92A1B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96E07986-6382-46D2-B6FE-9B276A92A1B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96E07986-6382-46D2-B6FE-9B276A92A1B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96E07986-6382-46D2-B6FE-9B276A92A1B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
