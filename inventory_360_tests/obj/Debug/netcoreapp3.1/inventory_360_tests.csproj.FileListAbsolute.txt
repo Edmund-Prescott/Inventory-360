@@ -1,0 +1,5 @@
+/Users/andrew/Documents/GitHub/Inventory-360/inventory_360_tests/obj/Debug/netcoreapp3.1/inventory_360_tests.csproj.AssemblyReference.cache
+/Users/andrew/Documents/GitHub/Inventory-360/inventory_360_tests/obj/Debug/netcoreapp3.1/inventory_360_tests.GeneratedMSBuildEditorConfig.editorconfig
+/Users/andrew/Documents/GitHub/Inventory-360/inventory_360_tests/obj/Debug/netcoreapp3.1/inventory_360_tests.AssemblyInfoInputs.cache
+/Users/andrew/Documents/GitHub/Inventory-360/inventory_360_tests/obj/Debug/netcoreapp3.1/inventory_360_tests.AssemblyInfo.cs
+/Users/andrew/Documents/GitHub/Inventory-360/inventory_360_tests/obj/Debug/netcoreapp3.1/inventory_360_tests.csproj.CoreCompileInputs.cache
