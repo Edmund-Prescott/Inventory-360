@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace inventory_360.Migrations
 {
-    public partial class initialmigration : Migration
+    public partial class updatedMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

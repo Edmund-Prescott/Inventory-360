@@ -9,8 +9,8 @@ using inventory_360.Data;
 namespace inventory_360.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221206062322_initialmigration")]
-    partial class initialmigration
+    [Migration("20221208061209_updatedMigrations")]
+    partial class updatedMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
